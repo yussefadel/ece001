@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="style5.css" /> 
+<style>
+</style>
+</head>
+<body>
+  
+  <div id="bod">
+  <!-- Menu -->
+  <div class="menu target center">
+    <div class="menu-line menu-line-1"></div>
+    <div class="menu-line menu-line-2"></div>
+  </div>
+  <!-- End of Menu -->
+
+  <!-- Navbar -->
+  <nav class="navbar target" style="font-size: 62.5%; " >
+    <a href="index.html" class="navbar-link">Home</a>
+    <a href="index2.html" class="navbar-link">Popular Cars</a>
+    <a href="index3.html" class="navbar-link">Car Racing</a>
+    <a href="index4.html" class="navbar-link">Cars Industry</a>
+    <a href="SignUp.html" class="navbar-link">Regestraion</a>
+  </nav>
+  <!-- End of Navbar -->
+  <div class="wrapper">
+<div class="back"> 
+  
+    <h2>Log In For Old Client...</h2>
+<form style="border: hidden black 1px;width:20%; padding-bottom: 10px; ">
+  
+  <label for="username">UserName</label><br>
+  <input type="email" name="username" id="username" style="border-radius: 5px;"><br>
+
+  <label for="oldpass">PassWord</label><br>
+  <input type="password" name="oldpass" id="oldpass" style="border-radius: 5px;"> <br>
+<button type="submit" style="margin-right :10px;"> submit</button>
+<button type="reset" > reset</button>
+<h6>For New Client Press Sign Up For Regestraion.... </h6>
+</form>
+
+
+
+
+<button onclick="showfunction()" style="margin-bottom:50px">Sign UP</button>
+</div>
+
+<div class="container" style="background-color: rgb(205, 247, 205);">
+  <form action="" id="formElement" name="form1" onsubmit="return verify()" style="display:none;background-color: #ccc;">
+   
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" required><br>
+
+        <label for="pswd">Password:</label><br>
+        <input type="password" name="password" id="pswd" >
+        <span style="color: black;" id="message"></span><br>
+
+        <label for="emailAddress">Email</label><br>
+        <input type="text" id="emailAddress" name="email" >
+        <span style="color: black;" id="message2"></span><br>
+
+        <label for="mobileNumber">Number:</label><br>
+        <input type="tel" id="mobileNumber" name="phone" placeholder="Egyptian Number...">
+        <span id="message1" style="color: black;"></span><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" name="address" id="address" required><br>
+
+        <label for="">Gender:</label><br>
+        <input type="radio" id="G1" name="Gender" value="Male" required>
+        <label for="G1">Male</label>
+        <input type="radio" id="G2" name="Gender" value="Female" required>
+        <label for="G2">Female</label><br>
+        <br> <br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    
+   
+      <input type="reset" value="reset"   style="padding: 10px;background-color:  #04AA6D;border: none;color: aliceblue;border-radius: 5px; " >
+    </div>
+  </form>
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+//validition password
+  function verify() {
+  var pw = document.getElementById("pswd").value;
+var pass=pw.toString();
+  var n=0,c=0,d=0;
+ let newtest=/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+  for(let i=0;i<pass.length;i++)
+  {
+    if(pass[i]==" ")
+    n=-1;
+  };
+
+  for(let t=0;t<pass.length;t++)
+  {
+    if(pass[t]>='A' && pass[t]<='z')
+    c++;
+  };
+
+  for(let t=0;t<pass.length;t++)
+  {
+    if(pass[t]>=0||pass[t]<=9)
+    d=1;
+  };
+
+  //check empty password field
+  if(pw == "") {
+     document.getElementById("message").innerHTML = "**Fill the password please!";
+     return false;
+  }
+ 
+ //minimum password length validation
+ else if(pw.length < 8) {
+     document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";
+     return false;
+  }
+
+else if(n==-1)
+{
+  document.getElementById("message").innerHTML = "**Password contain whitespace";
+  return false;
+}
+else if(pass[0]<'A' || pass[0]>'Z')
+  {
+    document.getElementById("message").innerHTML = "**Password Must Start with Uppercase character";
+    return false;
+  }
+ else if(c!=8)
+{
+  document.getElementById("message").innerHTML = "**Password contain less or more than 8 character";
+  return false;
+}
+
+else if(d==0)
+{
+  document.getElementById("message").innerHTML = "**Password Must contain At least one digit";
+  return false;
+}
+else if(pw.search(/[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]/) <0 ) {
+    document.getElementById("message").innerHTML = "**Password Must contain one special character";
+  return false;
+}
+else {
+  document.getElementById("message").innerHTML = "";
+}
+ 
+
+//validation email
+
+
+
+ let email= document.getElementById("emailAddress");
+
+    // regex pattern for email
+     const re = /\S+@\S+\.\S+/g;
+
+  // check if the email is valid
+  let result = re.test(email.value);
+  if (result) {
+    document.getElementById("message2").innerHTML="";
+    
+  }
+  else {
+    document.getElementById("message2").innerHTML="not valid";
+    return false;
+  }
+
+
+
+// var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+// if(email.value.match(mailformat))
+//   {
+//     document.getElementById("message2").innerHTML="";
+//   }
+//   else{
+//   document.getElementById("message2").innerHTML="not valid";
+//     return false;
+//   }
+
+
+
+
+
+
+
+//validation number 
+
+var mobileNumber= document.getElementById("mobileNumber");
+    var mobvalu=mobileNumber.value.trim();
+    validMobileNumber=/^[0-9]*$/;
+    var stringnumber=mobvalu.toString();
+    if(mobvalu=="")
+    {
+        document.getElementById("message1").innerHTML="Pleas Enter Your Mobile";
+        return false;
+    }
+    else if(mobvalu.length!=11 )
+    {
+        document.getElementById("message1").innerHTML="Mobile Must be 11 Digit";
+        return false;
+    }
+    else if(!validMobileNumber.test(mobvalu)){
+        document.getElementById("message1").innerHTML="Mobile must be digits only";
+    return false;
+    }
+    else if(stringnumber[0]!=0)
+    {
+        document.getElementById("message1").innerHTML="Mobile Must start with 0";
+        return false;
+    }
+    else {
+  document.getElementById("message1").innerHTML = "";
+}
+
+    
+  
+
+}
+
+  function showfunction()
+  {
+    document.getElementById('formElement').style.display = 'block';}
+  
+
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+</html>
